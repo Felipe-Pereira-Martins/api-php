@@ -20,13 +20,18 @@ switch($route) {
     /* Caso Home */
     case 'home':
     require_once 'inc/header.php';
-    require_once 'inc/home.php';
+    require_once 'scripts/home.php';
     require_once 'inc/footer.php';
     break;
     /* Caso 404 */
     case '404':
     require_once 'inc/header.php';
-    require_once 'inc/404.php';
+    require_once 'scripts/404.php';
     require_once 'inc/footer.php';
     break;
 }
+
+/* Anotações de segurança
+* Se quiser acesssar na url, na parte do script irá dar erro
+ */
+
