@@ -5,6 +5,7 @@ define('CONTROL', true);
 
 /* Incluir arquivos */
 $routes = require_once('inc/routes.php');
+require_once('inc/api_consumer.php');
 
 /* Definir rota */
 $route = $_GET['route'] ?? 'home'; /* Se a rota for nula, irá retornar para a página home */
@@ -23,6 +24,14 @@ switch($route) {
     require_once 'scripts/home.php';
     require_once 'inc/footer.php';
     break;
+
+    /* Caso Country */
+    case 'country':
+    require_once 'inc/header.php';
+    require_once 'scripts/country.php';
+    require_once 'inc/footer.php';
+    break;
+
     /* Caso 404 */
     case '404':
     require_once 'inc/header.php';
