@@ -1,5 +1,5 @@
 
-##🌎 API PHP — Consulta de Países
+🌎 API PHP — Consulta de Países
 
 Projeto desenvolvido em PHP com integração a API externa para consulta e exibição de informações sobre países, utilizando consumo de API REST, manipulação de JSON e renderização dinâmica de dados no frontend.
 
@@ -108,6 +108,3 @@ Felipe Martins
 ## 📄 Licença
 
 Projeto desenvolvido para fins de estudo e portfólio.
-
-```
-```
