@@ -1,13 +1,12 @@
-````md
-# 🌎 API PHP — Consulta de Países
+
+##🌎 API PHP — Consulta de Países
 
 Projeto desenvolvido em PHP com integração a API externa para consulta e exibição de informações sobre países, utilizando consumo de API REST, manipulação de JSON e renderização dinâmica de dados no frontend.
 
 O sistema foi criado com foco em aprendizado prático de integração entre frontend e backend utilizando PHP procedural, HTML5, CSS3 e JavaScript.
 
----
 
-## 🚀 Tecnologias Utilizadas
+ 🚀 Tecnologias Utilizadas
 
 * PHP
 * HTML5
