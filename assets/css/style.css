@@ -1,0 +1,504 @@
+/* ============================================================
+   RESET & BASE
+============================================================ */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   TOKENS
+============================================================ */
+
+:root {
+    --accent:          #7c4dff;
+    --accent-glow:     rgba(124, 77, 255, 0.22);
+    --accent-border:   rgba(124, 77, 255, 0.30);
+    --accent-hover:    rgba(124, 77, 255, 0.10);
+    --accent-label:    #b49aff;
+
+    --bg-page:         #07030f;
+    --bg-card:         rgba(14, 9, 26, 0.90);
+    --bg-item:         rgba(255, 255, 255, 0.028);
+    --bg-item-hover:   rgba(124, 77, 255, 0.07);
+
+    --border-card:     rgba(124, 77, 255, 0.28);
+    --border-item:     rgba(255, 255, 255, 0.055);
+    --border-item-hov: rgba(124, 77, 255, 0.20);
+
+    --text-primary:    #edeaf7;
+    --text-secondary:  #8e87aa;
+    --text-back:       #6a6285;
+
+    --radius-card:     26px;
+    --radius-flag:     18px;
+    --radius-item:     14px;
+
+    --transition:      0.28s ease;
+}
+
+/* ============================================================
+   BODY — fundo com gradientes radiais sutis
+============================================================ */
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse 60% 50% at 85% 5%,  rgba(90, 30, 230, 0.13) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 10% 95%, rgba(70, 20, 180, 0.10) 0%, transparent 55%),
+        var(--bg-page);
+
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* ============================================================
+   LINK VOLTAR
+============================================================ */
+
+.back-link {
+    width: 100%;
+    max-width: 960px;
+    margin-bottom: 20px;
+}
+
+.back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--text-back);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding: 6px 0;
+    transition: color var(--transition);
+}
+
+.back-link a::before {
+    content: '←';
+    font-size: 15px;
+    transition: transform var(--transition);
+}
+
+.back-link a:hover {
+    color: var(--accent-label);
+}
+
+.back-link a:hover::before {
+    transform: translateX(-3px);
+}
+
+/* ============================================================
+   CARD PRINCIPAL
+============================================================ */
+
+.country-box {
+    width: 100%;
+    max-width: 960px;
+
+    display: flex;
+    align-items: center;
+    gap: 52px;
+
+    padding: 44px 48px;
+
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-card);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 0 0 1px rgba(0, 0, 0, 0.4),
+        0 0 40px var(--accent-glow),
+        0 16px 64px rgba(0, 0, 0, 0.6);
+
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.country-box:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 0 0 1px rgba(0, 0, 0, 0.4),
+        0 0 55px rgba(124, 77, 255, 0.32),
+        0 20px 72px rgba(0, 0, 0, 0.65);
+}
+
+/* ============================================================
+   BANDEIRA
+============================================================ */
+
+.flag-box {
+    flex: 0 0 auto;
+    width: 330px;
+}
+
+.flag-img {
+    width: 100%;
+    display: block;
+    border-radius: var(--radius-flag);
+    border: 1px solid rgba(160, 130, 255, 0.30);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 0 28px rgba(124, 77, 255, 0.25),
+        0 8px 32px rgba(0, 0, 0, 0.50);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.flag-img:hover {
+    transform: scale(1.025);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 0 40px rgba(124, 77, 255, 0.38),
+        0 10px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* ============================================================
+   ÁREA DE INFORMAÇÕES
+============================================================ */
+
+.info-box {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* nome do país */
+
+.info-box h1 {
+    font-size: clamp(28px, 3.6vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    line-height: 1.08;
+    margin-bottom: 10px;
+
+    background: linear-gradient(118deg, #ffffff 20%, var(--accent-label) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================================
+   ITENS DE DADOS (capital / população)
+============================================================ */
+
+.info-item {
+    padding: 16px 20px;
+    border-radius: var(--radius-item);
+    background: var(--bg-item);
+    border: 1px solid var(--border-item);
+    transition: background var(--transition), border-color var(--transition);
+}
+
+.info-item:hover {
+    background: var(--bg-item-hover);
+    border-color: var(--border-item-hov);
+}
+
+.info-item strong {
+    display: block;
+    color: var(--accent-label);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    margin-bottom: 5px;
+}
+
+.info-item span {
+    display: block;
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.2px;
+}
+
+/* ============================================================
+   BADGE DE RODAPÉ (opcional — exibe "Fonte: REST Countries")
+============================================================ */
+
+.source-badge {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    opacity: 0.55;
+    letter-spacing: 0.3px;
+    transition: opacity var(--transition);
+}
+
+.source-badge:hover { opacity: 0.85; }
+
+.source-badge::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.6;
+}
+
+/* ============================================================
+   RESPONSIVO — tablet  (≤ 860px)
+============================================================ */
+
+@media (max-width: 860px) {
+    body {
+        padding: 32px 16px;
+        justify-content: flex-start;
+    }
+
+    .country-box {
+        flex-direction: column;
+        gap: 32px;
+        padding: 32px 28px;
+        text-align: center;
+    }
+
+    .flag-box {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .info-box {
+        width: 100%;
+    }
+
+    .info-box h1 {
+        font-size: clamp(26px, 7vw, 44px);
+        margin-bottom: 6px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVO — mobile  (≤ 480px)
+============================================================ */
+
+@media (max-width: 480px) {
+    body {
+        padding: 24px 12px;
+    }
+
+    .country-box {
+        padding: 24px 20px;
+        border-radius: 20px;
+        gap: 24px;
+    }
+
+    .flag-box {
+        max-width: 300px;
+    }
+
+    .info-item {
+        padding: 13px 16px;
+    }
+
+    .info-item span {
+        font-size: 18px;
+    }
+
+    .back-link {
+        margin-bottom: 14px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVO — telas muito pequenas (≤ 340px)
+============================================================ */
+
+@media (max-width: 340px) {
+    .country-box {
+        padding: 18px 14px;
+        border-radius: 16px;
+    }
+
+    .info-box h1 {
+        font-size: 22px;
+    }
+}
+
+
+/* ============================================================
+   HOME
+============================================================ */
+
+.home-wrap {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+}
+
+/* cabeçalho da home */
+
+.home-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.home-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-label);
+    opacity: 0.75;
+}
+
+.home-title {
+    font-size: clamp(32px, 6vw, 54px);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    line-height: 1.08;
+    background: linear-gradient(118deg, #ffffff 20%, var(--accent-label) 85%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.home-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 320px;
+    line-height: 1.6;
+}
+
+/* card do select */
+
+.search-box {
+    width: 100%;
+    padding: 32px 36px;
+    background: rgba(14, 9, 26, 0.90);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-card);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 0 0 1px rgba(0, 0, 0, 0.4),
+        0 0 36px var(--accent-glow),
+        0 12px 48px rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: var(--accent-label);
+}
+
+/* wrapper do select com seta customizada */
+
+.select-wrap {
+    position: relative;
+}
+
+.country-select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(124, 77, 255, 0.25);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    padding: 14px 44px 14px 16px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.country-select:hover {
+    border-color: rgba(124, 77, 255, 0.45);
+    background: rgba(124, 77, 255, 0.06);
+}
+
+.country-select:focus {
+    border-color: var(--accent);
+    background: rgba(124, 77, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.18);
+}
+
+.country-select option {
+    background: #140d2a;
+    color: var(--text-primary);
+}
+
+/* seta customizada */
+
+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: var(--accent-label);
+    opacity: 0.7;
+    pointer-events: none;
+    line-height: 1;
+}
+
+/* hint de contagem */
+
+.search-hint {
+    font-size: 11px;
+    color: var(--text-secondary);
+    opacity: 0.45;
+    text-align: right;
+    letter-spacing: 0.2px;
+}
+
+/* ============================================================
+   HOME — RESPONSIVO
+============================================================ */
+
+@media (max-width: 520px) {
+    .home-wrap {
+        gap: 28px;
+    }
+
+    .search-box {
+        padding: 24px 22px;
+    }
+
+    .home-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 340px) {
+    .search-box {
+        padding: 18px 16px;
+        border-radius: 18px;
+    }
+}
